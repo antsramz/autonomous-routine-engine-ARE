@@ -1,0 +1,41 @@
+{
+  "template_name": "Autonomous Routine Engine (ARE)",
+  "description": "A machine-only engine for defining and executing recurring, multi-step routines.",
+  "inputs": {
+    "routine_name": {
+      "type": "string",
+      "description": "Name of the routine."
+    },
+    "steps": {
+      "type": "list",
+      "description": "Ordered list of actions the routine should perform."
+    },
+    "schedule": {
+      "type": "string",
+      "description": "When or how often the routine should run."
+    },
+    "failure_policy": {
+      "type": "string",
+      "description": "What the agent should do if a step fails."
+    }
+  },
+  "workflow": [
+    {
+      "step": "initialize",
+      "action": "Agent loads routine definition and schedule."
+    },
+    {
+      "step": "execute_steps",
+      "action": "Agent executes each step in order, respecting dependencies."
+    },
+    {
+      "step": "handle_failures",
+      "action": "If a step fails, apply the defined failure policy."
+    },
+    {
+      "step": "log_and_report",
+      "action": "Agent logs execution results in a machine-readable summary."
+    }
+  ],
+  "output_format": "json"
+}
